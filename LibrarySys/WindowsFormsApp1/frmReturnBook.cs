@@ -97,7 +97,13 @@ namespace WindowsFormsApp1
         {
             if (grdRentedBooks.Rows.Count > 0)
             {
+                Rental myRental = new Rental();
+                Member myMember = new Member();
                 DateTime currentDate = DateTime.Today;
+                myRental.InstanceateByMemberId(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)));
+                myMember.findById(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)));
+
+                Member.UpdateLateFees(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)),Member.CalculateLateFees(String.Format("{0:dd-MMM-yy}", currentDate), myRental.GetDueDate(), myMember.GetLateFees()));
 
                 // update the book status to returned
                 Book.SetAvailable(Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value));

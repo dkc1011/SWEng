@@ -294,5 +294,35 @@ namespace WindowsFormsApp1
             myConn.Close();
         }
 
+        public static float CalculateLateFees(string returnDate, string dueDate, float LateFees)
+        {
+            
+            DateTime returnDateConvert = Convert.ToDateTime(returnDate);
+            DateTime dueDateConvert = Convert.ToDateTime(dueDate);
+            int comparison = DateTime.Compare(dueDateConvert, returnDateConvert);
+
+            if (comparison > 0)
+            {
+                return LateFees + 5.00f;
+            }
+            else
+            {
+                return LateFees;
+            }
+        }
+
+        public static void UpdateLateFees(int memberId, float lateFees)
+        {
+            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
+            myConn.Open();
+
+            String strSQL = "UPDATE Members SET LateFees = " + lateFees + " WHERE memberId = " + memberId;
+
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+            cmd.ExecuteNonQuery();
+
+            myConn.Close();
+        }
+
     }
 }

@@ -165,10 +165,7 @@ namespace WindowsFormsApp1
             return DS;
         }
 
-        public static void CalculateLateFees(string returnDate, string dueDate)
-        {
-            Convert.ToDateTime(returnDate);
-        }
+
 
     }
 }
