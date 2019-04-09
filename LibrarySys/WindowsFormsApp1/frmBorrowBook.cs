@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
     {
         frmMainMenu parent;
         Member myMember = new Member();
-        private int bookIndex;
         public frmBorrowBook()
         {
             InitializeComponent();
@@ -203,6 +202,7 @@ namespace WindowsFormsApp1
                     myRental.SetrentalId(Rental.NextRentalId());
                     myRental.SetMemberId(Convert.ToInt32(txtSelectedMember.Text));
                     myRental.SetDueDate(String.Format("{0:dd-MMM-yy}", dueDate));
+                    myRental.SetRentalDate(String.Format("{0:dd-MMM-yy}", currentDate));
 
                     //Creates as many RentalItems as there are books in the table
                     if (lstSelectedBooks.Items.Count > 0)
@@ -217,9 +217,9 @@ namespace WindowsFormsApp1
 
 
                             myRentalItem.SetRentalId(myRental.GetRentalID());
-                            myRentalItem.SetBookId(myBookId);
-                            myRentalItem.SetRentalDate(String.Format("{0:dd-MMM-yy}", currentDate));
+                            myRentalItem.SetBookId(myBookId); 
                             myRentalItem.SetOpen('o');
+                            myRentalItem.SetReturnDate(String.Format("{0:dd-MMM-yy}", "01-JAN-00"));
                             Book.makeBookUnavailable(myBookId);
 
                             myRentalItem.AddRentalItem();

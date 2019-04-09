@@ -11,22 +11,22 @@ namespace WindowsFormsApp1
     {
         private int rentalId;
         private int bookId;
-        private string rentalDate;
+        private string returnDate;
         private char open;
 
         public RentalItem()
         {
             rentalId = 0;
             bookId = 0;
-            rentalDate = "";
+            returnDate = "";
             open = 'c';
         }
 
-        public RentalItem(int rentalId, int bookId, string rentalDate, char open)
+        public RentalItem(int rentalId, int bookId, string returnDate, char open)
         {
             this.rentalId = rentalId;
             this.bookId = bookId;
-            this.rentalDate = rentalDate;
+            this.returnDate = returnDate;
             this.open = open;
         }
 
@@ -40,9 +40,9 @@ namespace WindowsFormsApp1
             this.bookId = bookId;
         }
 
-        public void SetRentalDate(string rentalDate)
+        public void SetReturnDate(string rentalDate)
         {
-            this.rentalDate = rentalDate;
+            this.returnDate = rentalDate;
         }
 
         public void SetOpen(char open)
@@ -60,9 +60,9 @@ namespace WindowsFormsApp1
             return bookId;
         }
 
-        public string GetRentalDate()
+        public string GetReturnDate()
         {
-            return rentalDate;
+            return returnDate;
         }
 
         public char GetOpen()
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
-            String strSQL = "INSERT INTO rentalItems VALUES ('" + GetRentalId().ToString() + "','" + GetBookId().ToString() + "','" + GetRentalDate().ToUpper() + "','" + open + "')";
+            String strSQL = "INSERT INTO rentalItems VALUES ('" + GetRentalId().ToString() + "','" + GetBookId().ToString() + "','" + GetReturnDate().ToUpper() + "','" + open + "')";
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -136,16 +136,20 @@ namespace WindowsFormsApp1
             return DS;
         }
 
-        public static void closeRental(int bookId)
+        public static void CloseRental(int bookId, string returnDate)
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
             String strSQL = "UPDATE RentalItems SET Open = 'c' WHERE bookId = " + bookId;
-            Book.SetAvailable(bookId);
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
+
+            String strSQL2 = "UPDATE RentalItems SET returnDate = '" + returnDate + "' WHERE bookId = " + bookId;
+
+            OracleCommand cmd2 = new OracleCommand(strSQL2, myConn);
+            cmd2.ExecuteNonQuery();
 
             myConn.Close();
         }

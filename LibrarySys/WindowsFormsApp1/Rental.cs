@@ -13,14 +13,14 @@ namespace WindowsFormsApp1
         private int rentalID;
         private string dueDate;
         private int memberID;
-
+        private string rentalDate;
 
         public Rental()
         {
             rentalID = 0;
             dueDate = "";
             memberID = 0;
-
+            rentalDate = "";
         }
 
         public Rental(int rentalID, string date, int memberId)
@@ -45,6 +45,11 @@ namespace WindowsFormsApp1
             this.dueDate = dueDate;
         }
 
+        public void SetRentalDate(string rentalDate)
+        {
+            this.rentalDate = rentalDate;
+        }
+
         public int GetRentalID()
         {
             return rentalID;
@@ -58,6 +63,11 @@ namespace WindowsFormsApp1
         public string GetDueDate()
         {
             return dueDate;
+        }
+
+        public string GetRentalDate()
+        {
+            return rentalDate;
         }
 
         public static int NextRentalId()
@@ -87,7 +97,7 @@ namespace WindowsFormsApp1
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
-            String strSQL = "INSERT INTO rentals VALUES ('" + NextRentalId().ToString() + "','" + dueDate.ToUpper() + "','" + memberID + "')";
+            String strSQL = "INSERT INTO rentals VALUES ('" + NextRentalId().ToString() + "','" + dueDate.ToUpper() + "','" + memberID + "','" + rentalDate + "')";
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -110,7 +120,30 @@ namespace WindowsFormsApp1
 
             this.rentalID = dr.GetInt32(0);
             this.dueDate = dr.GetString(1);
-            this.memberID = dr.GetInt32(5);
+            this.memberID = dr.GetInt32(2);
+            this.rentalDate = dr.GetString(3);
+
+            conn.Close();
+        }
+
+
+        public void InstanceateByMemberId(int memberId)
+        {
+            OracleConnection conn = new OracleConnection(DBConnect.oradb);
+            conn.Open();
+
+            String strSQL = "SELECT * FROM rentals WHERE memberId =" + memberID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            this.rentalID = dr.GetInt32(0);
+            this.dueDate = dr.GetString(1);
+            this.memberID = dr.GetInt32(2);
+            this.rentalDate = dr.GetString(3);
 
             conn.Close();
         }
@@ -130,6 +163,11 @@ namespace WindowsFormsApp1
 
             conn.Close();
             return DS;
+        }
+
+        public static void CalculateLateFees(string returnDate, string dueDate)
+        {
+            Convert.ToDateTime(returnDate);
         }
 
     }

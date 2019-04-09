@@ -36,10 +36,10 @@
             this.lblMemberSearch = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMemSearch = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblCloseRental = new System.Windows.Forms.Button();
+            this.grpReturnBook = new System.Windows.Forms.GroupBox();
             this.grdRentedBooks = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
+            this.lblCloseRental = new System.Windows.Forms.Button();
+            this.grpReturnBook.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRentedBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,17 +117,29 @@
             this.lblMemSearch.TabIndex = 30;
             this.lblMemSearch.Text = "Members :";
             // 
-            // groupBox1
+            // grpReturnBook
             // 
-            this.groupBox1.Controls.Add(this.grdRentedBooks);
-            this.groupBox1.Controls.Add(this.lblCloseRental);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 159);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(572, 173);
-            this.groupBox1.TabIndex = 32;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Return Book";
+            this.grpReturnBook.Controls.Add(this.grdRentedBooks);
+            this.grpReturnBook.Controls.Add(this.lblCloseRental);
+            this.grpReturnBook.Controls.Add(this.label1);
+            this.grpReturnBook.Location = new System.Drawing.Point(14, 159);
+            this.grpReturnBook.Name = "grpReturnBook";
+            this.grpReturnBook.Size = new System.Drawing.Size(572, 173);
+            this.grpReturnBook.TabIndex = 32;
+            this.grpReturnBook.TabStop = false;
+            this.grpReturnBook.Text = "Return Book";
+            // 
+            // grdRentedBooks
+            // 
+            this.grdRentedBooks.AllowUserToAddRows = false;
+            this.grdRentedBooks.AllowUserToDeleteRows = false;
+            this.grdRentedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdRentedBooks.Location = new System.Drawing.Point(22, 32);
+            this.grdRentedBooks.Name = "grdRentedBooks";
+            this.grdRentedBooks.Size = new System.Drawing.Size(340, 125);
+            this.grdRentedBooks.TabIndex = 34;
+            this.grdRentedBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRentedBooks_CellClick);
+            this.grdRentedBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRentedBooks_CellContentClick);
             // 
             // lblCloseRental
             // 
@@ -139,21 +151,12 @@
             this.lblCloseRental.UseVisualStyleBackColor = true;
             this.lblCloseRental.Click += new System.EventHandler(this.lblCloseRental_Click);
             // 
-            // grdRentedBooks
-            // 
-            this.grdRentedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdRentedBooks.Location = new System.Drawing.Point(23, 32);
-            this.grdRentedBooks.Name = "grdRentedBooks";
-            this.grdRentedBooks.Size = new System.Drawing.Size(341, 135);
-            this.grdRentedBooks.TabIndex = 34;
-            this.grdRentedBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRentedBooks_CellContentClick);
-            // 
             // frmReturnBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpReturnBook);
             this.Controls.Add(this.lblMemSearch);
             this.Controls.Add(this.btnMemberSearch);
             this.Controls.Add(this.btnFinished);
@@ -164,8 +167,8 @@
             this.Name = "frmReturnBook";
             this.Text = "frmReturnBook";
             this.Load += new System.EventHandler(this.frmReturnBook_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpReturnBook.ResumeLayout(false);
+            this.grpReturnBook.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRentedBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,7 +185,7 @@
         private System.Windows.Forms.Label lblMemberSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMemSearch;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpReturnBook;
         private System.Windows.Forms.Button lblCloseRental;
         private System.Windows.Forms.DataGridView grdRentedBooks;
     }

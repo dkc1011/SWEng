@@ -68,5 +68,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void btnCheckAvailable_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

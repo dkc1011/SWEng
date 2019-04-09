@@ -33,8 +33,6 @@
             this.lstOverdueBooks = new System.Windows.Forms.ListBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.lblDueDate = new System.Windows.Forms.Label();
-            this.lblHPotter = new System.Windows.Forms.Label();
-            this.lblLOTR = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBookSearch
@@ -80,33 +78,11 @@
             this.lblDueDate.TabIndex = 34;
             this.lblDueDate.Text = "Select Today\'s Date";
             // 
-            // lblHPotter
-            // 
-            this.lblHPotter.AutoSize = true;
-            this.lblHPotter.Location = new System.Drawing.Point(263, 17);
-            this.lblHPotter.Name = "lblHPotter";
-            this.lblHPotter.Size = new System.Drawing.Size(181, 13);
-            this.lblHPotter.TabIndex = 35;
-            this.lblHPotter.Text = "Harry Potter and the Deathly Hallows";
-            this.lblHPotter.Click += new System.EventHandler(this.lblHPotter_Click);
-            // 
-            // lblLOTR
-            // 
-            this.lblLOTR.AutoSize = true;
-            this.lblLOTR.Location = new System.Drawing.Point(263, 39);
-            this.lblLOTR.Name = "lblLOTR";
-            this.lblLOTR.Size = new System.Drawing.Size(110, 13);
-            this.lblLOTR.TabIndex = 36;
-            this.lblLOTR.Text = "The Lord of the Rings";
-            this.lblLOTR.Click += new System.EventHandler(this.lblLOTR_Click_1);
-            // 
             // frmListOverdueBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
-            this.Controls.Add(this.lblLOTR);
-            this.Controls.Add(this.lblHPotter);
             this.Controls.Add(this.lblDueDate);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.btnBookSearch);
@@ -126,7 +102,5 @@
         private System.Windows.Forms.ListBox lstOverdueBooks;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label lblDueDate;
-        private System.Windows.Forms.Label lblHPotter;
-        private System.Windows.Forms.Label lblLOTR;
     }
 }

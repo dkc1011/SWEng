@@ -21,18 +21,9 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             parent = Parent;
-            lblHPotter.Hide();
-            lblLOTR.Hide();
         }
         private void btnBookSearch_Click(object sender, EventArgs e)
         {
-            lblHPotter.Show();
-            lblLOTR.Show();
-        }
-
-        private void lblHPotter_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Harry Potter and the Deathly Hallows was rented by Liam Dowling and was due back 05/12/2018");
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
@@ -41,10 +32,5 @@ namespace WindowsFormsApp1
             parent.Show();
         }
 
-
-        private void lblLOTR_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("The Lord of the Rings was rented by Liam Dowling and was due back 06/12/2018");
-        }
     }
 }

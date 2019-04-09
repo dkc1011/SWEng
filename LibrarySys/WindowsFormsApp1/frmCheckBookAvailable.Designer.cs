@@ -88,6 +88,7 @@
             this.btnCheckAvailable.TabIndex = 33;
             this.btnCheckAvailable.Text = "Check Available";
             this.btnCheckAvailable.UseVisualStyleBackColor = true;
+            this.btnCheckAvailable.Click += new System.EventHandler(this.btnCheckAvailable_Click);
             // 
             // frmCheckBookAvailable
             // 

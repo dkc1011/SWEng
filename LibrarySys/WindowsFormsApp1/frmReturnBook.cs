@@ -54,6 +54,7 @@ namespace WindowsFormsApp1
             //lstMemberSearch.SelectedIndex = 0;
             txtMemberSearch.Clear();
             lstMemberSearch.Visible = true;
+            lblMemSearch.Visible = true;
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
@@ -79,39 +80,12 @@ namespace WindowsFormsApp1
                 }
 
                 grdRentedBooks.DataSource = ds.Tables["RentalItem_books"];
+                grpReturnBook.Visible = true;
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("Member has no rentals currently");
             }
-
-            
-
-            /*
-            //retrieve all books with matching name
-            DataSet ds = new DataSet();
-            DataSet ds2 = new DataSet();
-            ds = RentalItem.FindOpenRentalItemsByBookId(Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()));
-            ds2 = Book.FindBookById(Convert.ToInt32(lstMemberBooks.Text.Substring(0,3)));
-            
-
-
-            //if no books are found
-            if (ds.Tables[0].Rows.Count == 0)
-            {
-                MessageBox.Show("No Books Found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtBookSearch.Focus();
-                return;
-            }
-
-            lstBookSearch.Items.Clear();
-            for (int i = 0; i < ds.Tables["ss"].Rows.Count; i++)
-                lstBookSearch.Items.Add(ds.Tables[0].Rows[i][0].ToString().PadLeft(3, '0') + " " + ds.Tables[0].Rows[i][1].ToString() + " BY " + ds.Tables[0].Rows[i][2].ToString());
-            lstBookSearch.SelectedIndex = 0;
-            txtBookSearch.Clear();
-            lstBookSearch.Visible = true;*/
-
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -121,29 +95,38 @@ namespace WindowsFormsApp1
 
         private void lblCloseRental_Click(object sender, EventArgs e)
         {
-            /*if (lstMemberBooks.SelectedIndex >= 0)
+            if (grdRentedBooks.Rows.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Is this the book to be returned?", "Confirm", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    RentalItem.closeRental(Convert.ToInt32(lstMemberBooks.Text.Substring(0,3)));
-                    lstMemberBooks.Items.Remove(lstMemberBooks.SelectedIndex);
-                    MessageBox.Show("Rental was successfully closed");
-                }
+                DateTime currentDate = DateTime.Today;
+
+                // update the book status to returned
+                Book.SetAvailable(Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value));
+
+                //update rental Item with return date and status
+                RentalItem.CloseRental(Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value), (String.Format("{0:dd-MMM-yy}", currentDate)));
+
+                MessageBox.Show("Rental was succesfully closed");
+
+                clearUI();
             }
             else
             {
-                MessageBox.Show("No rental was selected", "Error");
-            }*/
+                MessageBox.Show("No selected rental");
+            }
+            
         }
 
         private void clearUI()
         {
-
+            grpReturnBook.Visible = false;
+            lstMemberSearch.Items.Clear();
+            lstMemberSearch.Visible = false;
+            lblMemSearch.Visible = false;
         }
 
         private void grdRentedBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+          
             
         }
 
@@ -154,7 +137,13 @@ namespace WindowsFormsApp1
 
         private void frmReturnBook_Load(object sender, EventArgs e)
         {
+            lstMemberSearch.Visible = false;
+            grpReturnBook.Visible = false;
+            lblMemSearch.Visible = false;
+        }
 
+        private void grdRentedBooks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }
