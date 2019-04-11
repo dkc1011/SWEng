@@ -164,5 +164,20 @@ namespace WindowsFormsApp1
 
         }
 
+        //public static DataSet GetAllYears(DataSet DS)
+        //{
+        //    OracleConnection conn = new OracleConnection(DBConnect.oradb);
+
+        //    String strSQL = "SELECT YEAR(rentalDate) FROM Rentals ORDER BY rentalDate";
+        //    OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+        //    OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+        //    da.Fill(DS, "ss");
+
+        //    conn.Close();
+
+        //    return DS;
+        //}
     }
 }

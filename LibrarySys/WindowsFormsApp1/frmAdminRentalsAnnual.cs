@@ -41,39 +41,50 @@ namespace WindowsFormsApp1
 
         private void btnViewStatistics_Click(object sender, EventArgs e)
         {
+            if (cboYear.Text != "SELECT YEAR")
+            {
+
+
+                for (int i = 1; i <= 12; i++)
+                {
+                    Months[i - 1] = getMonth(i);
+                }
+
+                String strSQL = "SELECT COUNT(RentalId), to_Char(RentalDate,'MM') FROM Rentals WHERE to_Char(RentalDate, 'YYYY') = '" + cboYear.Text + "' GROUP BY to_Char(RentalDate,'MM') ORDER BY to_Char(RentalDate,'MM')";
+                DataTable dt = new DataTable();
+
+                OracleConnection myConn = new OracleConnection(DBConnect.oradb); OracleCommand cmd = new OracleCommand(strSQL, myConn); OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+                da.Fill(dt);
+                myConn.Close();
+
+                string[] N = new string[dt.Rows.Count]; decimal[] M = new decimal[dt.Rows.Count];
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    N[i] = getMonth(Convert.ToInt32(dt.Rows[i][1])); M[i] = Convert.ToDecimal(dt.Rows[i][0]);
+                }
+                chtAnnualRentals.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+                chtAnnualRentals.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+                chtAnnualRentals.Series[0].LegendText = "Number of Rentals";
+                chtAnnualRentals.Series[0].Points.DataBindXY(N, M);
+                chtAnnualRentals.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "C";
+
+                chtAnnualRentals.Series[0].Label = "#VALY";
+
+
+                chtAnnualRentals.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("No Year was Selected", "Error");
+            }
         }
 
         private void frmAdminRentalsAnnual_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 12; i++)
-            {
-                Months[i - 1] = getMonth(i);
-            }
-
-            String strSQL = "SELECT COUNT(RentalId), to_Char(RentalDate,'MM') FROM Rentals GROUP BY to_Char(RentalDate,'MM') ORDER BY to_Char(RentalDate,'MM')";
-            DataTable dt = new DataTable();
-
-            OracleConnection myConn = new OracleConnection(DBConnect.oradb); OracleCommand cmd = new OracleCommand(strSQL, myConn); OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            da.Fill(dt);
-            myConn.Close();
-
-            string[] N = new string[dt.Rows.Count]; decimal[] M = new decimal[dt.Rows.Count];
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                N[i] = getMonth(Convert.ToInt32(dt.Rows[i][1])); M[i] = Convert.ToDecimal(dt.Rows[i][0]);
-            }
-            chtAnnualRentals.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-            chtAnnualRentals.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
-            chtAnnualRentals.Series[0].LegendText = "Number of Rentals";
-            chtAnnualRentals.Series[0].Points.DataBindXY(N, M);
-            chtAnnualRentals.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "C";
-
-            chtAnnualRentals.Series[0].Label = "#VALY";
+            loadCombo();
             chtAnnualRentals.Titles.Add("Yearly Rentals");
-
-            chtAnnualRentals.Visible = true;
 
         }
         private String getMonth(int Month)
@@ -107,6 +118,17 @@ namespace WindowsFormsApp1
                 default: return "OTH";
 
             }
+        }
+
+        public void loadCombo()
+        {
+            cboYear.Items.Add("SELECT YEAR");
+            cboYear.Items.Add(DateTime.Now.Year - 4);
+            cboYear.Items.Add(DateTime.Now.Year - 3);
+            cboYear.Items.Add(DateTime.Now.Year - 2);
+            cboYear.Items.Add(DateTime.Now.Year - 1);
+            cboYear.Items.Add(DateTime.Now.Year);
+            
         }
     }
 }
