@@ -85,76 +85,88 @@ namespace WindowsFormsApp1
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            if (validSumPaid(txtSumPaid.Text))
+            if (myMember.GetLateFees() > 0)
             {
-                SumPaid = Convert.ToDouble(txtSumPaid.Text);
-                LateFeeStart = myMember.GetLateFees();
-
-                var confirmResult = MessageBox.Show("Confirm that " + String.Format("€{0:N2} Euro", SumPaid) + " was paid by member?",
-                 "Confirm Payment",
-                 MessageBoxButtons.YesNo);
-
-                if (confirmResult == DialogResult.Yes)
+                if (validSumPaid(txtSumPaid.Text))
                 {
-                    
-                    
+                    SumPaid = Convert.ToDouble(txtSumPaid.Text);
+                    LateFeeStart = myMember.GetLateFees();
 
-                    if (SumPaid > myMember.GetLateFees())
-                    {          
-                        change = SumPaid - myMember.GetLateFees();
-                        myMember.SetLateFees(0.00);
-                        myMember.updMember();
-
-                        MessageBox.Show("Member's late fees were paid in full. " + String.Format("€{0:N2} Euro", change) + " due in change.");
-                    }
-                    else if (SumPaid == myMember.GetLateFees())
+                    if (SumPaid >= 2)
                     {
-                        myMember.SetLateFees(0.00);
-                        myMember.updMember();
+                        var confirmResult = MessageBox.Show("Confirm that " + String.Format("€{0:N2} Euro", SumPaid) + " was paid by member?",
+                         "Confirm Payment",
+                         MessageBoxButtons.YesNo);
 
-                        MessageBox.Show("Member's late fees were paid in full. No Change due.", "Success");
+                        if (confirmResult == DialogResult.Yes)
+                        {
+
+
+
+                            if (SumPaid > myMember.GetLateFees())
+                            {
+                                change = SumPaid - myMember.GetLateFees();
+                                myMember.SetLateFees(0.00);
+                                myMember.updMember();
+
+                                MessageBox.Show("Member's late fees were paid in full. " + String.Format("€{0:N2} Euro", change) + " due in change.");
+                            }
+                            else if (SumPaid == myMember.GetLateFees())
+                            {
+                                myMember.SetLateFees(0.00);
+                                myMember.updMember();
+                                change = 0;
+
+                                MessageBox.Show("Member's late fees were paid in full. No Change due.", "Success");
+                            }
+                            else
+                            {
+                                myMember.SetLateFees(myMember.GetLateFees() - SumPaid);
+                                myMember.updMember();
+                                change = 0;
+
+                                MessageBox.Show("Fees were partially paid. " + String.Format("€{0:N2} Euro", myMember.GetLateFees()) + " remains to be paid.");
+                            }
+
+                            var confirmResult2 = MessageBox.Show("Print a receipt?",
+                            "Confirm Payment",
+                            MessageBoxButtons.YesNo);
+
+                            if (confirmResult2 == DialogResult.Yes)
+                            {
+                                PrintDocument pd = new PrintDocument();
+                                pd.PrintPage += new PrintPageEventHandler(this.pd_PrintPage);
+
+                                PrintDialog pdi = new PrintDialog();
+                                pdi.Document = pd;
+                                if (pdi.ShowDialog() == DialogResult.OK)
+                                {
+                                    pd.Print();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Print Cancelled");
+                                }
+                            }
+
+                            ClearUI();
+
+                        }
                     }
                     else
                     {
-                        myMember.SetLateFees(myMember.GetLateFees() - SumPaid);
-                        myMember.updMember();
-
-                        MessageBox.Show("Fees were partially paid. " + String.Format("€{0:N2} Euro", myMember.GetLateFees()) + " remains to be paid.");
+                        MessageBox.Show("The value paid was too small. Payments must be made above €2","Invalid Entry");
                     }
-
-                    var confirmResult2 = MessageBox.Show("Print a receipt?",
-                    "Confirm Payment",
-                    MessageBoxButtons.YesNo);
-
-                    if (confirmResult2 == DialogResult.Yes)
-                    {
-                        PrintDocument pd = new PrintDocument();
-                        pd.PrintPage += new PrintPageEventHandler(this.pd_PrintPage);
-
-                        PrintDialog pdi = new PrintDialog();
-                        pdi.Document = pd;
-                        if (pdi.ShowDialog() == DialogResult.OK)
-                        {
-                            pd.Print();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Print Cancelled");
-                        }
-                    }
-
-                    ClearUI();
-
                 }
                 else
                 {
-
+                    MessageBox.Show("Invalid money, please enter a valid euro value (nn.nn format)", "Error");
+                    txtSumPaid.Text = "00.00";
                 }
             }
             else
             {
-                MessageBox.Show("Invalid money, please enter a valid euro value (nn.nn format)", "Error");
-                txtSumPaid.Text = "00.00";
+                MessageBox.Show("The Member has no fines to pay");
             }
         }
 
@@ -189,13 +201,16 @@ namespace WindowsFormsApp1
         // The PrintPage event is raised for each page to be printed.
         private void pd_PrintPage(Object sender, PrintPageEventArgs e)
         {
-            Font myFont = new Font("m_svoboda", 14, FontStyle.Underline, GraphicsUnit.Point);
+            Font myFont = new Font("m_svoboda", 14, GraphicsUnit.Point);
 
             float lineHeight = myFont.GetHeight(e.Graphics) + 4;
 
             float yLineTop = e.MarginBounds.Top;
 
-            string text = "+ Library Member Receipt + \n\n\n Late fee: " + LateFeeStart + "\nSum paid: " + SumPaid + "\n\n\nChange tendered: " + change + "\n\n\n+++++++++++++++++++++++++";
+            string text = "\t\t\t+ Library Member Receipt + \n\n\n\tMember Charged: " + myMember.getForename() 
+                + " " + myMember.getSurname() + "\n\n\tLate fee: " + String.Format("€{0:N2} Euro", LateFeeStart) 
+                + "\n\tSum paid: " + String.Format("€{0:N2} Euro", SumPaid) + "\n\tRemaining Fees: " + String.Format("€{0:N2} Euro", myMember.GetLateFees()) + "\n\n\n\tChange tendered: " 
+                + String.Format("€{0:N2} Euro", change) + "\n\n\n\t\t\t+++++++++++++++++++++";
       
             
 

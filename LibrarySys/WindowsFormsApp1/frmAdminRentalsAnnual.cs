@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
         private void frmAdminRentalsAnnual_Load(object sender, EventArgs e)
         {
             loadCombo();
-            chtAnnualRentals.Titles.Add("Yearly Rentals");
+                            chtAnnualRentals.Titles.Add("Yearly Rentals");
 
         }
         private String getMonth(int Month)
