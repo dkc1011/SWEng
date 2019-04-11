@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class frmAdminRentalsGenre : Form
     {
+
+
         frmMainMenu parent;
         public frmAdminRentalsGenre()
         {
@@ -22,7 +25,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             parent = Parent;
-            imgGenre.Hide();
+            
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
@@ -34,14 +37,14 @@ namespace WindowsFormsApp1
 
         private void btnViewStatistics_Click(object sender, EventArgs e)
         {
-            if(cboGenre.Text.Equals("2017"))
-            {
-                imgGenre.Show();
-            }
-            else
-            {
-                MessageBox.Show("There was not data to display in your chosen year (for Prototyping purposes, select 2017)");
-            }
+            
+        }
+
+        private void frmAdminRentalsGenre_Load(object sender, EventArgs e)
+        {
+            
+
+            
         }
     }
 }

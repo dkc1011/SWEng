@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnFinished = new System.Windows.Forms.Button();
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.btnViewStatistics = new System.Windows.Forms.Button();
-            this.imgAnnRent = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imgAnnRent)).BeginInit();
+            this.chtAnnualRentals = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.chtAnnualRentals)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFinished
@@ -68,27 +71,35 @@
             this.btnViewStatistics.UseVisualStyleBackColor = true;
             this.btnViewStatistics.Click += new System.EventHandler(this.btnViewStatistics_Click);
             // 
-            // imgAnnRent
+            // chtAnnualRentals
             // 
-            this.imgAnnRent.Image = global::WindowsFormsApp1.Properties.Resources.SampleGraph2;
-            this.imgAnnRent.Location = new System.Drawing.Point(59, 1);
-            this.imgAnnRent.Name = "imgAnnRent";
-            this.imgAnnRent.Size = new System.Drawing.Size(493, 310);
-            this.imgAnnRent.TabIndex = 4;
-            this.imgAnnRent.TabStop = false;
+            chartArea1.Name = "ChartArea1";
+            this.chtAnnualRentals.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtAnnualRentals.Legends.Add(legend1);
+            this.chtAnnualRentals.Location = new System.Drawing.Point(59, 25);
+            this.chtAnnualRentals.Name = "chtAnnualRentals";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chtAnnualRentals.Series.Add(series1);
+            this.chtAnnualRentals.Size = new System.Drawing.Size(493, 278);
+            this.chtAnnualRentals.TabIndex = 4;
+            this.chtAnnualRentals.Text = "chart1";
             // 
             // frmAdminRentalsAnnual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
-            this.Controls.Add(this.imgAnnRent);
+            this.Controls.Add(this.chtAnnualRentals);
             this.Controls.Add(this.btnViewStatistics);
             this.Controls.Add(this.cboYear);
             this.Controls.Add(this.btnFinished);
             this.Name = "frmAdminRentalsAnnual";
             this.Text = "frmAdminRentalsAnnual";
-            ((System.ComponentModel.ISupportInitialize)(this.imgAnnRent)).EndInit();
+            this.Load += new System.EventHandler(this.frmAdminRentalsAnnual_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.chtAnnualRentals)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -97,6 +108,6 @@
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.ComboBox cboYear;
         private System.Windows.Forms.Button btnViewStatistics;
-        private System.Windows.Forms.PictureBox imgAnnRent;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chtAnnualRentals;
     }
 }

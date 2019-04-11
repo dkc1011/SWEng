@@ -75,7 +75,7 @@
             this.lstMembers.FormattingEnabled = true;
             this.lstMembers.Location = new System.Drawing.Point(264, 12);
             this.lstMembers.Name = "lstMembers";
-            this.lstMembers.Size = new System.Drawing.Size(318, 108);
+            this.lstMembers.Size = new System.Drawing.Size(310, 108);
             this.lstMembers.TabIndex = 2;
             this.lstMembers.Visible = false;
             this.lstMembers.SelectedIndexChanged += new System.EventHandler(this.lstMembers_SelectedIndexChanged);

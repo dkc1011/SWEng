@@ -102,13 +102,13 @@ namespace WindowsFormsApp1
                 
                 Member myMember = new Member();
 
-                float LateFeesStart = myMember.GetLateFees();
+                double LateFeesStart = myMember.GetLateFees();
 
                 DateTime currentDate = DateTime.Today;                
                 myMember.findById(memberId);
                 DateTime dueDate = Rental.FindDueDate(memberId, RentalItem.FindRentalIdFromBookId(bookId));
 
-                float LateFees = myMember.CalculateLateFees(String.Format("{0:dd-MMM-yy}", currentDate), dueDate, LateFeesStart);
+                double LateFees = myMember.CalculateLateFees(String.Format("{0:dd-MMM-yy}", currentDate), dueDate, LateFeesStart);
                 myMember.UpdateLateFees(LateFees);
 
                 // update the book status to returned
