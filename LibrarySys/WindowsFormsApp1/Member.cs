@@ -294,16 +294,16 @@ namespace WindowsFormsApp1
             myConn.Close();
         }
 
-        public static float CalculateLateFees(string returnDate, string dueDate, float LateFees)
+        public float CalculateLateFees(string returnDate, DateTime dueDate, float LateFees)
         {
             
             DateTime returnDateConvert = Convert.ToDateTime(returnDate);
-            DateTime dueDateConvert = Convert.ToDateTime(dueDate);
-            int comparison = DateTime.Compare(dueDateConvert, returnDateConvert);
+            int comparison = DateTime.Compare(dueDate, returnDateConvert);
+            float NewLateFees = LateFees + 5.00f;
 
-            if (comparison > 0)
+            if (comparison < 0)
             {
-                return LateFees + 5.00f;
+                return NewLateFees;
             }
             else
             {
@@ -311,12 +311,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static void UpdateLateFees(int memberId, float lateFees)
+        public void UpdateLateFees(float lateFees)
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
-            String strSQL = "UPDATE Members SET LateFees = " + lateFees + " WHERE memberId = " + memberId;
+            String strSQL = "UPDATE Members SET Late_Fees = " + lateFees + " WHERE memberId = " + memberId;
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();

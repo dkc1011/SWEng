@@ -97,21 +97,34 @@ namespace WindowsFormsApp1
         {
             if (grdRentedBooks.Rows.Count > 0)
             {
-                Rental myRental = new Rental();
+                int memberId = Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3));
+                int bookId = Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value);
+                
                 Member myMember = new Member();
-                DateTime currentDate = DateTime.Today;
-                myRental.InstanceateByMemberId(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)));
-                myMember.findById(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)));
 
-                Member.UpdateLateFees(Convert.ToInt32(lstMemberSearch.Text.Substring(0, 3)),Member.CalculateLateFees(String.Format("{0:dd-MMM-yy}", currentDate), myRental.GetDueDate(), myMember.GetLateFees()));
+                float LateFeesStart = myMember.GetLateFees();
+
+                DateTime currentDate = DateTime.Today;                
+                myMember.findById(memberId);
+                DateTime dueDate = Rental.FindDueDate(memberId, RentalItem.FindRentalIdFromBookId(bookId));
+
+                float LateFees = myMember.CalculateLateFees(String.Format("{0:dd-MMM-yy}", currentDate), dueDate, LateFeesStart);
+                myMember.UpdateLateFees(LateFees);
 
                 // update the book status to returned
-                Book.SetAvailable(Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value));
+                Book.SetAvailable(bookId);
 
                 //update rental Item with return date and status
-                RentalItem.CloseRental(Convert.ToInt32(grdRentedBooks.Rows[grdRentedBooks.CurrentCell.RowIndex].Cells[0].Value), (String.Format("{0:dd-MMM-yy}", currentDate)));
+                RentalItem.CloseRental(bookId, (String.Format("{0:dd-MMM-yy}", currentDate)));
 
-                MessageBox.Show("Rental was succesfully closed");
+                if (LateFeesStart < LateFees)
+                {
+                    MessageBox.Show("Rental was succesfully closed, Late Fees were added");
+                }
+                else
+                {
+                    MessageBox.Show("Rental was succesfully closed");
+                }
 
                 clearUI();
             }

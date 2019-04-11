@@ -24,6 +24,22 @@ namespace WindowsFormsApp1
         }
         private void btnBookSearch_Click(object sender, EventArgs e)
         {
+            DateTime selectedDate = dtpSelectedDate.Value;
+
+            try
+            {               
+
+                DataSet ds = new DataSet();
+
+                ds = RentalItem.FindOverdueBook(selectedDate);
+
+                grdOverdueBooks.DataSource = ds.Tables["RentalItem_books"];
+                grdOverdueBooks.Visible = true;
+            }
+            catch (Oracle.ManagedDataAccess.Client.OracleException)
+            {
+                MessageBox.Show("No books were overdue after this date.");
+            }
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
@@ -32,5 +48,9 @@ namespace WindowsFormsApp1
             parent.Show();
         }
 
+        private void frmListOverdueBooks_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

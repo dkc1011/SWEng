@@ -141,17 +141,55 @@ namespace WindowsFormsApp1
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
-            String strSQL = "UPDATE RentalItems SET Open = 'c' WHERE bookId = " + bookId;
-
-            OracleCommand cmd = new OracleCommand(strSQL, myConn);
-            cmd.ExecuteNonQuery();
-
-            String strSQL2 = "UPDATE RentalItems SET returnDate = '" + returnDate + "' WHERE bookId = " + bookId;
+            String strSQL2 = "UPDATE RentalItems SET returnDate = '" + returnDate + "' WHERE bookId = " + bookId + " AND Open = 'o'";
 
             OracleCommand cmd2 = new OracleCommand(strSQL2, myConn);
             cmd2.ExecuteNonQuery();
 
+            String strSQL = "UPDATE RentalItems SET Open = 'c' WHERE bookId = " + bookId + " AND Open = 'o'";
+
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+            cmd.ExecuteNonQuery();
+
+
+
             myConn.Close();
+        }
+
+        public static int FindRentalIdFromBookId(int bookId)
+        {
+            OracleConnection conn = new OracleConnection(DBConnect.oradb);
+            conn.Open();
+
+            String strSQL = "SELECT rentalId FROM rentalitems WHERE bookId =" + bookId + " AND open = 'o'";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            int rentId = dr.GetInt32(0);
+
+            return rentId;
+        }
+
+        public static DataSet FindOverdueBook(DateTime selectedDate)
+        {
+            OracleConnection conn = new OracleConnection(DBConnect.oradb);
+            DataSet DS = new DataSet();
+
+            conn.Open();
+
+            String strSQL = "SELECT RentalItems.BookId, Books.Title, Books.Author, Rentals.DueDate FROM RentalItems INNER JOIN Books ON RentalItems.BookId = Books.BookId INNER JOIN Rentals ON RentalItems.RentalId = Rentals.RentalId WHERE dueDate >= " + selectedDate + " AND Open = 'o' ORDER BY RentalId";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(DS, "RentalItem_books");
+
+            conn.Close();
+            return DS;
         }
     }
 }

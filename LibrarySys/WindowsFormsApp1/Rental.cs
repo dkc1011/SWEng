@@ -23,11 +23,12 @@ namespace WindowsFormsApp1
             rentalDate = "";
         }
 
-        public Rental(int rentalID, string date, int memberId)
+        public Rental(int rentalID, string date, int memberId, string rentalDate)
         {
             this.rentalID = rentalID;
             this.dueDate = date;
             this.memberID = memberId;
+            this.rentalDate = rentalDate;
         }
 
         public void SetrentalId(int rentalID)
@@ -126,28 +127,6 @@ namespace WindowsFormsApp1
             conn.Close();
         }
 
-
-        public void InstanceateByMemberId(int memberId)
-        {
-            OracleConnection conn = new OracleConnection(DBConnect.oradb);
-            conn.Open();
-
-            String strSQL = "SELECT * FROM rentals WHERE memberId =" + memberID;
-
-            OracleCommand cmd = new OracleCommand(strSQL, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            dr.Read();
-
-            this.rentalID = dr.GetInt32(0);
-            this.dueDate = dr.GetString(1);
-            this.memberID = dr.GetInt32(2);
-            this.rentalDate = dr.GetString(3);
-
-            conn.Close();
-        }
-
         public static DataSet FindByMemberId(int memberId)
         {
             OracleConnection conn = new OracleConnection(DBConnect.oradb);
@@ -165,7 +144,25 @@ namespace WindowsFormsApp1
             return DS;
         }
 
+        public static DateTime FindDueDate(int memberId, int rentalId)
+        {
+            OracleConnection conn = new OracleConnection(DBConnect.oradb);
+            conn.Open();
 
+            String strSQL = "SELECT * FROM rentals WHERE memberId =" + memberId + " AND rentalId = " + rentalId;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            DateTime dueDate = dr.GetDateTime(1);
+
+            return dueDate;
+
+
+        }
 
     }
 }

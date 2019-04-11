@@ -30,14 +30,15 @@
         {
             this.btnBookSearch = new System.Windows.Forms.Button();
             this.btnFinished = new System.Windows.Forms.Button();
-            this.lstOverdueBooks = new System.Windows.Forms.ListBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.lblDueDate = new System.Windows.Forms.Label();
+            this.dtpSelectedDate = new System.Windows.Forms.DateTimePicker();
+            this.grdOverdueBooks = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grdOverdueBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBookSearch
             // 
-            this.btnBookSearch.Location = new System.Drawing.Point(18, 213);
+            this.btnBookSearch.Location = new System.Drawing.Point(18, 69);
             this.btnBookSearch.Name = "btnBookSearch";
             this.btnBookSearch.Size = new System.Drawing.Size(227, 22);
             this.btnBookSearch.TabIndex = 32;
@@ -47,27 +48,13 @@
             // 
             // btnFinished
             // 
-            this.btnFinished.Location = new System.Drawing.Point(18, 241);
+            this.btnFinished.Location = new System.Drawing.Point(18, 337);
             this.btnFinished.Name = "btnFinished";
             this.btnFinished.Size = new System.Drawing.Size(227, 22);
             this.btnFinished.TabIndex = 31;
             this.btnFinished.Text = "Finished";
             this.btnFinished.UseVisualStyleBackColor = true;
             this.btnFinished.Click += new System.EventHandler(this.btnFinished_Click);
-            // 
-            // lstOverdueBooks
-            // 
-            this.lstOverdueBooks.FormattingEnabled = true;
-            this.lstOverdueBooks.Location = new System.Drawing.Point(257, 14);
-            this.lstOverdueBooks.Name = "lstOverdueBooks";
-            this.lstOverdueBooks.Size = new System.Drawing.Size(325, 342);
-            this.lstOverdueBooks.TabIndex = 30;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(18, 39);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 33;
             // 
             // lblDueDate
             // 
@@ -78,18 +65,35 @@
             this.lblDueDate.TabIndex = 34;
             this.lblDueDate.Text = "Select Today\'s Date";
             // 
+            // dtpSelectedDate
+            // 
+            this.dtpSelectedDate.Location = new System.Drawing.Point(18, 43);
+            this.dtpSelectedDate.Name = "dtpSelectedDate";
+            this.dtpSelectedDate.Size = new System.Drawing.Size(227, 20);
+            this.dtpSelectedDate.TabIndex = 35;
+            // 
+            // grdOverdueBooks
+            // 
+            this.grdOverdueBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdOverdueBooks.Location = new System.Drawing.Point(266, 17);
+            this.grdOverdueBooks.Name = "grdOverdueBooks";
+            this.grdOverdueBooks.Size = new System.Drawing.Size(316, 342);
+            this.grdOverdueBooks.TabIndex = 36;
+            // 
             // frmListOverdueBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
+            this.Controls.Add(this.grdOverdueBooks);
+            this.Controls.Add(this.dtpSelectedDate);
             this.Controls.Add(this.lblDueDate);
-            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.btnBookSearch);
             this.Controls.Add(this.btnFinished);
-            this.Controls.Add(this.lstOverdueBooks);
             this.Name = "frmListOverdueBooks";
             this.Text = "frmListOverdueBooks";
+            this.Load += new System.EventHandler(this.frmListOverdueBooks_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grdOverdueBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,8 +103,8 @@
 
         private System.Windows.Forms.Button btnBookSearch;
         private System.Windows.Forms.Button btnFinished;
-        private System.Windows.Forms.ListBox lstOverdueBooks;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label lblDueDate;
+        private System.Windows.Forms.DateTimePicker dtpSelectedDate;
+        private System.Windows.Forms.DataGridView grdOverdueBooks;
     }
 }
