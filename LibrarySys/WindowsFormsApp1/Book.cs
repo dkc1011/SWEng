@@ -124,7 +124,7 @@ namespace WindowsFormsApp1
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
-            String strSQL = "INSERT INTO Books VALUES ('" + NextBookId().ToString() + "','" + title.ToUpper() + "','" + author.ToUpper() + "','" + ISBN.ToUpper() + "','" + available + "','" + genreID + "')";
+            String strSQL = "INSERT INTO Books VALUES ('" + NextBookId().ToString() + "','" + frmAddMember.apostChecker(title.ToUpper()) + "','" + author.ToUpper() + "','" + ISBN.ToUpper() + "','" + available + "','" + genreID + "')";
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
-            String strSQL = "UPDATE Books SET Title = '" + this.title.ToUpper() + "', author = '" + this.author + "', ISBN = '" + this.ISBN + "', genreId = " + this.genreID + " WHERE BookId = " + this.bookID;
+            String strSQL = "UPDATE Books SET Title = '" + frmAddMember.apostChecker(this.title.ToUpper()) + "', author = '" + this.author + "', ISBN = '" + this.ISBN + "', genreId = " + this.genreID + " WHERE BookId = " + this.bookID;
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -150,7 +150,7 @@ namespace WindowsFormsApp1
             OracleConnection conn = new OracleConnection(DBConnect.oradb);
             DataSet DS = new DataSet();
 
-            String strSQL = "SELECT * FROM Books WHERE title LIKE '" + name + "%' ORDER BY BookId";
+            String strSQL = "SELECT * FROM Books WHERE title LIKE '" + frmAddMember.apostChecker(name) + "%' ORDER BY BookId";
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
             OracleDataAdapter da = new OracleDataAdapter(cmd);
@@ -208,7 +208,7 @@ namespace WindowsFormsApp1
             OracleConnection conn = new OracleConnection(DBConnect.oradb);
             DataSet DS = new DataSet();
 
-            String strSQL = "SELECT * FROM Books WHERE title LIKE '" + name + "%' AND Available = 'a' ORDER BY BookId";
+            String strSQL = "SELECT * FROM Books WHERE title LIKE '" + frmAddMember.apostChecker(name) + "%' AND Available = 'a' ORDER BY BookId";
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
             OracleDataAdapter da = new OracleDataAdapter(cmd);

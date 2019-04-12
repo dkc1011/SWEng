@@ -181,7 +181,7 @@ namespace WindowsFormsApp1
 
             conn.Open();
 
-            String strSQL = "SELECT RentalItems.BookId, Books.Title, Books.Author, Rentals.DueDate FROM RentalItems INNER JOIN Books ON RentalItems.BookId = Books.BookId INNER JOIN Rentals ON RentalItems.RentalId = Rentals.RentalId WHERE dueDate >= " + selectedDate + " AND Open = 'o' ORDER BY RentalId";
+            String strSQL = "SELECT RentalItems.BookId, Books.Title, Books.Author, Rentals.DueDate FROM RentalItems INNER JOIN Books ON RentalItems.BookId = Books.BookId INNER JOIN Rentals ON RentalItems.RentalId = Rentals.RentalId WHERE dueDate >= '" + selectedDate + "' AND Open = 'o' ORDER BY RentalId";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
             OracleDataAdapter da = new OracleDataAdapter(cmd);

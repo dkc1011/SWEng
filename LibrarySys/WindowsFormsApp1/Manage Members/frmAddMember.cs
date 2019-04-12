@@ -45,21 +45,27 @@ namespace WindowsFormsApp1
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if(txtSurname.Text.Equals(""))
+            int dateCompare = DateTime.Compare(DateTime.Now, dtpDOB.Value);
+
+            if(txtSurname.Text.Equals("") || !IsNonNumeric(txtSurname.Text))
             {
-                MessageBox.Show("All fields must be filled.", "Error");
+                MessageBox.Show("Invalid Surname Entered.", "Error");
             }
-            else if(txtForename.Text.Equals(""))
+            else if(txtForename.Text.Equals("") || !IsNonNumeric(txtForename.Text))
             {
-                MessageBox.Show("All fields must be filled.", "Error");
+                MessageBox.Show("Invalid Forename Entered.", "Error");
             }
             else if (txtStreet.Text.Equals(""))
             {
                 MessageBox.Show("All fields must be filled.", "Error");
             }
-            else if (txtTown.Text.Equals(""))
+            else if (txtTown.Text.Equals("") || !IsNonNumeric(txtTown.Text))
             {
                 MessageBox.Show("All fields must be filled.", "Error");
+            }
+            else if (dateCompare < 0)
+            {
+                MessageBox.Show("Date selected cannot be a future date.");
             }
             else if (txtEmail.Text.Equals(""))
             {
@@ -76,10 +82,11 @@ namespace WindowsFormsApp1
             }
             else
             {                
-                Member myMember = new Member(Member.nextMemberId(),txtSurname.Text, txtForename.Text, String.Format("{0:dd-MMM-yy}", dtpDOB.Value), txtStreet.Text, txtTown.Text, txtPhone.Text, txtEmail.Text, 'a');
+                Member myMember = new Member(Member.nextMemberId(),txtSurname.Text, frmAddMember.apostChecker(txtForename.Text), String.Format("{0:dd-MMM-yy}", dtpDOB.Value), txtStreet.Text, txtTown.Text, txtPhone.Text, txtEmail.Text, 'a');
 
                 myMember.addMember();
 
+                
                 //Reset UI
                 MessageBox.Show("Member " + txtForename.Text.ToUpper() + " " + txtSurname.Text.ToUpper() + " Added", "Success");
                 txtSurname.Clear();
@@ -109,6 +116,38 @@ namespace WindowsFormsApp1
             {
                 return false;
             }
+        }
+
+        internal static string apostChecker(string text)
+        {
+            string newText = "";
+            for(int i = 0; i < text.Length; i++)
+            {
+                if (text[i] ==  '\'')
+                {
+                    newText += text[i] + "\'";
+                }
+                else
+                {
+                    newText += text[i];
+                }
+            }
+            return newText;
+        }
+
+        internal static bool IsNonNumeric(string text)
+        {
+            double Num;
+
+            bool isNum = double.TryParse(text, out Num);
+
+            if (isNum)
+
+                return false;
+
+            else
+
+                return true;
         }
     }
 }

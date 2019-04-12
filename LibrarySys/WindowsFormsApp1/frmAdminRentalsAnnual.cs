@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,48 +44,55 @@ namespace WindowsFormsApp1
         {
             if (cboYear.Text != "SELECT YEAR")
             {
-
-
-                for (int i = 1; i <= 12; i++)
+                if (validYear(cboYear.Text))
                 {
-                    Months[i - 1] = getMonth(i);
+
+
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        Months[i - 1] = getMonth(i);
+                    }
+
+                    String strSQL = "SELECT COUNT(RentalId), to_Char(RentalDate,'MM') FROM Rentals WHERE to_Char(RentalDate, 'YYYY') = '" + cboYear.Text + "' GROUP BY to_Char(RentalDate,'MM') ORDER BY to_Char(RentalDate,'MM')";
+                    DataTable dt = new DataTable();
+
+                    OracleConnection myConn = new OracleConnection(DBConnect.oradb); OracleCommand cmd = new OracleCommand(strSQL, myConn); OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+                    da.Fill(dt);
+                    myConn.Close();
+
+                    string[] N = new string[dt.Rows.Count]; decimal[] M = new decimal[dt.Rows.Count];
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        N[i] = getMonth(Convert.ToInt32(dt.Rows[i][1])); M[i] = Convert.ToDecimal(dt.Rows[i][0]);
+                    }
+                    chtAnnualRentals.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+                    chtAnnualRentals.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+                    chtAnnualRentals.Series[0].LegendText = "Number of Rentals";
+                    chtAnnualRentals.Series[0].Points.DataBindXY(N, M);
+                    chtAnnualRentals.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "C";
+
+                    chtAnnualRentals.Series[0].Label = "#VALY";
+
+
+                    chtAnnualRentals.Visible = true;
                 }
-
-                String strSQL = "SELECT COUNT(RentalId), to_Char(RentalDate,'MM') FROM Rentals WHERE to_Char(RentalDate, 'YYYY') = '" + cboYear.Text + "' GROUP BY to_Char(RentalDate,'MM') ORDER BY to_Char(RentalDate,'MM')";
-                DataTable dt = new DataTable();
-
-                OracleConnection myConn = new OracleConnection(DBConnect.oradb); OracleCommand cmd = new OracleCommand(strSQL, myConn); OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-                da.Fill(dt);
-                myConn.Close();
-
-                string[] N = new string[dt.Rows.Count]; decimal[] M = new decimal[dt.Rows.Count];
-
-                for (int i = 0; i < dt.Rows.Count; i++)
+                else
                 {
-                    N[i] = getMonth(Convert.ToInt32(dt.Rows[i][1])); M[i] = Convert.ToDecimal(dt.Rows[i][0]);
+                    MessageBox.Show("No Year was Selected", "Error");
                 }
-                chtAnnualRentals.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-                chtAnnualRentals.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
-                chtAnnualRentals.Series[0].LegendText = "Number of Rentals";
-                chtAnnualRentals.Series[0].Points.DataBindXY(N, M);
-                chtAnnualRentals.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "C";
-
-                chtAnnualRentals.Series[0].Label = "#VALY";
-
-
-                chtAnnualRentals.Visible = true;
             }
             else
             {
-                MessageBox.Show("No Year was Selected", "Error");
+                MessageBox.Show("Please input a valid year.");
             }
         }
 
         private void frmAdminRentalsAnnual_Load(object sender, EventArgs e)
         {
             loadCombo();
-                            chtAnnualRentals.Titles.Add("Yearly Rentals");
+            chtAnnualRentals.Titles.Add("Yearly Rentals");
 
         }
         private String getMonth(int Month)
@@ -129,6 +137,18 @@ namespace WindowsFormsApp1
             cboYear.Items.Add(DateTime.Now.Year - 1);
             cboYear.Items.Add(DateTime.Now.Year);
             
+        }
+
+        public bool validYear(String inStr)
+        {
+            if (Regex.IsMatch(inStr, @"^\d{4}$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

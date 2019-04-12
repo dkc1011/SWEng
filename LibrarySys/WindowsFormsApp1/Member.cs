@@ -249,7 +249,7 @@ namespace WindowsFormsApp1
         {
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
-            String strSQL = "INSERT INTO Members VALUES ('" + memberId + "','" + surname.ToUpper() + "','" + forename.ToUpper() + "','" + date_of_birth + "','" + street.ToUpper()
+            String strSQL = "INSERT INTO Members VALUES ('" + memberId + "','" + frmAddMember.apostChecker(surname.ToUpper()) + "','" + forename.ToUpper() + "','" + date_of_birth + "','" + street.ToUpper()
                 + "','" + town.ToUpper() + "','" + phone + "','" + email.ToUpper() + "','" + late_fees + "','" + 'a' + "')";
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
@@ -263,7 +263,7 @@ namespace WindowsFormsApp1
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
-            String strSQL = "UPDATE Members SET Surname = '" + this.surname.ToUpper() + "', Forename = '" + this.forename + "', Date_of_birth = '" + this.date_of_birth + "', Street = '" + this.street + "', Town = '" + this.town + "', Phone = '" + this.phone + "', Email = '" + this.email + "', late_fees = '" + String.Format("{0:N2}", this.late_fees) + "' WHERE MemberId = " + this.memberId;
+            String strSQL = "UPDATE Members SET Surname = '" + frmAddMember.apostChecker(this.surname.ToUpper()) + "', Forename = '" + this.forename + "', Date_of_birth = '" + this.date_of_birth + "', Street = '" + this.street + "', Town = '" + this.town + "', Phone = '" + this.phone + "', Email = '" + this.email + "', late_fees = '" + String.Format("{0:N2}", this.late_fees) + "' WHERE MemberId = " + this.memberId;
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -291,7 +291,7 @@ namespace WindowsFormsApp1
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
-            String strSQL = "DELETE FROM Members WHERE Surname = '" + Surname + "'";
+            String strSQL = "DELETE FROM Members WHERE Surname = '" + frmAddMember.apostChecker(Surname) + "'";
 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();

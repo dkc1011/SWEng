@@ -109,19 +109,58 @@ namespace WindowsFormsApp1
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            myMember.setSurname(txtSurname.Text.ToUpper());
-            myMember.setForename(txtForename.Text.ToUpper());
-            myMember.setStreet(txtStreet.Text.ToUpper());
-            myMember.setTown(txtTown.Text.ToUpper());
-            myMember.setPhone(txtPhone.Text.ToUpper());
-            myMember.setEmail(txtEmail.Text.ToUpper());
 
-            myMember.updMember();
+            int dateCompare = DateTime.Compare(DateTime.Now, dtpDOB.Value);
 
-            MessageBox.Show("Member " + txtForename.Text.ToUpper() + " " + txtSurname.Text.ToUpper() + " Updated", "Success");
+            if (txtSurname.Text.Equals("") || !frmAddMember.IsNonNumeric(txtSurname.Text))
+            {
+                MessageBox.Show("Invalid Surname Entered.", "Error");
+            }
+            else if (txtForename.Text.Equals("") || !frmAddMember.IsNonNumeric(txtForename.Text))
+            {
+                MessageBox.Show("Invalid Forename Entered.", "Error");
+            }
+            else if (txtStreet.Text.Equals(""))
+            {
+                MessageBox.Show("All fields must be filled.", "Error");
+            }
+            else if (txtTown.Text.Equals("") || !frmAddMember.IsNonNumeric(txtTown.Text))
+            {
+                MessageBox.Show("All fields must be filled.", "Error");
+            }
+            else if (dateCompare < 0)
+            {
+                MessageBox.Show("Date selected cannot be a future date.");
+            }
+            else if (txtEmail.Text.Equals(""))
+            {
+                MessageBox.Show("All fields must be filled.", "Error");
+            }
+            else if (txtPhone.Text.Equals(""))
+            {
+                MessageBox.Show("All fields must be filled.", "Error");
+            }
+            else if (!validEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email Address is Invalid. Please enter a valid email address.", "Error");
+                txtEmail.Clear();
+            }
+            else
+            {
+                myMember.setSurname(txtSurname.Text.ToUpper());
+                myMember.setForename(txtForename.Text.ToUpper());
+                myMember.setStreet(txtStreet.Text.ToUpper());
+                myMember.setTown(txtTown.Text.ToUpper());
+                myMember.setPhone(txtPhone.Text.ToUpper());
+                myMember.setEmail(txtEmail.Text.ToUpper());
 
-            txtMemberSearch.Clear();
-            txtMemberSearch.Focus();
+                myMember.updMember();
+
+                MessageBox.Show("Member " + txtForename.Text.ToUpper() + " " + txtSurname.Text.ToUpper() + " Updated", "Success");
+
+                txtMemberSearch.Clear();
+                txtMemberSearch.Focus();
+            }
         }
 
         public bool validEmail(String inStr)
@@ -135,6 +174,22 @@ namespace WindowsFormsApp1
                 return false;
             }
         }
+
+        public static string apostChecker(string text)
+        {
+            string newText = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '\'')
+                {
+                    newText += text[i] + "\'";
+                }
+                else
+                    newText += text[i];
+            }
+            return newText;
+        }
+
 
     }
 }

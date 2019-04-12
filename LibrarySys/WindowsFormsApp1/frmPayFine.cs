@@ -215,7 +215,6 @@ namespace WindowsFormsApp1
             
 
             //MessageBox.Show(text);
-            // I should print the coupon here
             e.Graphics.DrawString(text, myFont, Brushes.Black,
             new PointF(e.MarginBounds.Left, yLineTop));
 
