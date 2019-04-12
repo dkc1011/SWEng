@@ -140,20 +140,12 @@ C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFo
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmAdminRentalsAnnual.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmAdminRentalsGenre.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmBorrowBook.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmBorrowBook2.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmBorrowBook3.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmCheckBookAvailable.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmListOverdueBooks.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmMainMenu.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmPayFine.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmPayFine2.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmRemoveBook.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmReturnBook.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmReturnBook2.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmUpdateBook1.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmUpdateBook2.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmAddMember.resources
-C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Manage_Members.frmRemoveMember1.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmUpdateMember1.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\LibrarySYS.csproj.GenerateResource.cache
@@ -161,3 +153,6 @@ C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\LibrarySY
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\LibrarySYS.csproj.CopyComplete
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmSearchAvailableBooks.resources
+C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmUnlistBook.resources
+C:\Users\t00201097\Desktop\SWEng\LibrarySys\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Manage_Members.frmDeregisterMember.resources

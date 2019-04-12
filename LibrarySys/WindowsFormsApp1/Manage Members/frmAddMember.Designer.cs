@@ -62,7 +62,6 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(191, 20);
             this.txtSurname.TabIndex = 0;
-            this.txtSurname.TextChanged += new System.EventHandler(this.txtSurnameBox_TextChanged);
             // 
             // lblForename
             // 
@@ -172,7 +171,6 @@
             this.lblAddMemberHeader.TabIndex = 11;
             this.lblAddMemberHeader.Text = "Add Member";
             this.lblAddMemberHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAddMemberHeader.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnFinished
             // 
@@ -215,7 +213,6 @@
             this.Controls.Add(this.lblSurname);
             this.Name = "frmAddMember";
             this.Text = "frmAddMember";
-            this.Load += new System.EventHandler(this.frmAddMember_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

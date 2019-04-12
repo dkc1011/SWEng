@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class frmBorrowBook2
+    partial class frmSearchAvailableBooks
     {
         /// <summary>
         /// Required designer variable.
@@ -28,40 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblEnder = new System.Windows.Forms.Label();
             this.btnBookSearch = new System.Windows.Forms.Button();
             this.btnFinished = new System.Windows.Forms.Button();
             this.lstBooks = new System.Windows.Forms.ListBox();
             this.txtBookSearch = new System.Windows.Forms.TextBox();
-            this.lblBookTitle = new System.Windows.Forms.Label();
+            this.lblMemberSearch = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lblEnder
-            // 
-            this.lblEnder.AutoSize = true;
-            this.lblEnder.Location = new System.Drawing.Point(273, 20);
-            this.lblEnder.Name = "lblEnder";
-            this.lblEnder.Size = new System.Drawing.Size(71, 13);
-            this.lblEnder.TabIndex = 34;
-            this.lblEnder.Text = "Enders Game";
-            this.lblEnder.Click += new System.EventHandler(this.lblEnder_Click);
             // 
             // btnBookSearch
             // 
-            this.btnBookSearch.Location = new System.Drawing.Point(76, 40);
+            this.btnBookSearch.Location = new System.Drawing.Point(88, 40);
             this.btnBookSearch.Name = "btnBookSearch";
-            this.btnBookSearch.Size = new System.Drawing.Size(173, 22);
-            this.btnBookSearch.TabIndex = 33;
+            this.btnBookSearch.Size = new System.Drawing.Size(170, 22);
+            this.btnBookSearch.TabIndex = 32;
             this.btnBookSearch.Text = "Search";
             this.btnBookSearch.UseVisualStyleBackColor = true;
             this.btnBookSearch.Click += new System.EventHandler(this.btnBookSearch_Click);
             // 
             // btnFinished
             // 
-            this.btnFinished.Location = new System.Drawing.Point(76, 68);
+            this.btnFinished.Location = new System.Drawing.Point(412, 337);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(173, 22);
-            this.btnFinished.TabIndex = 32;
+            this.btnFinished.Size = new System.Drawing.Size(170, 22);
+            this.btnFinished.TabIndex = 31;
             this.btnFinished.Text = "Finished";
             this.btnFinished.UseVisualStyleBackColor = true;
             this.btnFinished.Click += new System.EventHandler(this.btnFinished_Click);
@@ -71,38 +60,37 @@
             this.lstBooks.FormattingEnabled = true;
             this.lstBooks.Location = new System.Drawing.Point(264, 14);
             this.lstBooks.Name = "lstBooks";
-            this.lstBooks.Size = new System.Drawing.Size(318, 342);
-            this.lstBooks.TabIndex = 31;
+            this.lstBooks.Size = new System.Drawing.Size(318, 316);
+            this.lstBooks.TabIndex = 30;
             // 
             // txtBookSearch
             // 
-            this.txtBookSearch.Location = new System.Drawing.Point(76, 14);
+            this.txtBookSearch.Location = new System.Drawing.Point(88, 14);
             this.txtBookSearch.Name = "txtBookSearch";
-            this.txtBookSearch.Size = new System.Drawing.Size(173, 20);
-            this.txtBookSearch.TabIndex = 30;
+            this.txtBookSearch.Size = new System.Drawing.Size(170, 20);
+            this.txtBookSearch.TabIndex = 29;
             // 
-            // lblBookTitle
+            // lblMemberSearch
             // 
-            this.lblBookTitle.AutoSize = true;
-            this.lblBookTitle.Location = new System.Drawing.Point(12, 17);
-            this.lblBookTitle.Name = "lblBookTitle";
-            this.lblBookTitle.Size = new System.Drawing.Size(58, 13);
-            this.lblBookTitle.TabIndex = 29;
-            this.lblBookTitle.Text = "Book Title:";
+            this.lblMemberSearch.AutoSize = true;
+            this.lblMemberSearch.Location = new System.Drawing.Point(21, 17);
+            this.lblMemberSearch.Name = "lblMemberSearch";
+            this.lblMemberSearch.Size = new System.Drawing.Size(61, 13);
+            this.lblMemberSearch.TabIndex = 28;
+            this.lblMemberSearch.Text = "Book Title :";
             // 
-            // frmBorrowBook2
+            // frmCheckBookAvailable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
-            this.Controls.Add(this.lblEnder);
             this.Controls.Add(this.btnBookSearch);
             this.Controls.Add(this.btnFinished);
             this.Controls.Add(this.lstBooks);
             this.Controls.Add(this.txtBookSearch);
-            this.Controls.Add(this.lblBookTitle);
-            this.Name = "frmBorrowBook2";
-            this.Text = "frmBorrowBook2";
+            this.Controls.Add(this.lblMemberSearch);
+            this.Name = "frmCheckBookAvailable";
+            this.Text = "frmCheckBookAvailable";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,11 +98,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblEnder;
         private System.Windows.Forms.Button btnBookSearch;
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.ListBox lstBooks;
         private System.Windows.Forms.TextBox txtBookSearch;
-        private System.Windows.Forms.Label lblBookTitle;
+        private System.Windows.Forms.Label lblMemberSearch;
     }
 }

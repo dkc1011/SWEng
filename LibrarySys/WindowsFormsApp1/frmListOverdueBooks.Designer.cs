@@ -74,6 +74,8 @@
             // 
             // grdOverdueBooks
             // 
+            this.grdOverdueBooks.AllowUserToAddRows = false;
+            this.grdOverdueBooks.AllowUserToDeleteRows = false;
             this.grdOverdueBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdOverdueBooks.Location = new System.Drawing.Point(266, 17);
             this.grdOverdueBooks.Name = "grdOverdueBooks";
@@ -92,7 +94,6 @@
             this.Controls.Add(this.btnFinished);
             this.Name = "frmListOverdueBooks";
             this.Text = "frmListOverdueBooks";
-            this.Load += new System.EventHandler(this.frmListOverdueBooks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdOverdueBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -53,10 +53,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void lstSelectedBooks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnFinished_Click(object sender, EventArgs e)
         {
@@ -99,15 +95,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show("There was no book selected", "Error");
             }
     
-        }
-
-        private void frmBorrowBook_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void txtSelectedMember_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnBookSearch_Click(object sender, EventArgs e)

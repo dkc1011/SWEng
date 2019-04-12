@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Manage_Members
 {
-    partial class frmRemoveMember1
+    partial class frmDeregisterMember
     {
         /// <summary>
         /// Required designer variable.

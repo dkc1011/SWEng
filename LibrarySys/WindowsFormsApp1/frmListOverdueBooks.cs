@@ -26,31 +26,21 @@ namespace WindowsFormsApp1
         {
             DateTime selectedDate = dtpSelectedDate.Value;
 
-            try
-            {               
+             
 
-                DataSet ds = new DataSet();
+            DataSet ds = new DataSet();
 
-                ds = RentalItem.FindOverdueBook(selectedDate);
+            ds = RentalItem.FindOverdueBook(selectedDate);
 
-                grdOverdueBooks.DataSource = ds.Tables["RentalItem_books"];
-                grdOverdueBooks.Visible = true;
-            }
-            catch (Oracle.ManagedDataAccess.Client.OracleException)
-            {
-                MessageBox.Show("No books were overdue after this date.");
-            }
+            grdOverdueBooks.DataSource = ds.Tables["RentalItem_books"];
+            grdOverdueBooks.Visible = true;
+            
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
         {
             this.Close();
             parent.Show();
-        }
-
-        private void frmListOverdueBooks_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

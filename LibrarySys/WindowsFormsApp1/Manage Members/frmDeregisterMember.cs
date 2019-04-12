@@ -11,17 +11,17 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1.Manage_Members
 {
 
-    public partial class frmRemoveMember1 : Form
+    public partial class frmDeregisterMember : Form
     {
         frmMainMenu parent;
         private int mno;
 
-        public frmRemoveMember1()
+        public frmDeregisterMember()
         {
             InitializeComponent();
         }
 
-        public frmRemoveMember1(frmMainMenu Parent)
+        public frmDeregisterMember(frmMainMenu Parent)
         {
             InitializeComponent();
             parent = Parent;

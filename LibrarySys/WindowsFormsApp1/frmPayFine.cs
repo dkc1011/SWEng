@@ -68,11 +68,6 @@ namespace WindowsFormsApp1
             lstMembers.Visible = true;
         }
 
-        private void frmPayFine_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lstMembers_SelectedIndexChanged(object sender, EventArgs e)
         {
             grpFine.Visible = false;
@@ -168,11 +163,6 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("The Member has no fines to pay");
             }
-        }
-
-        private void txtSelectedMember_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private bool validSumPaid(String inStr)

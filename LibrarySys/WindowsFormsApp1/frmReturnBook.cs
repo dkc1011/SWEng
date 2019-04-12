@@ -143,26 +143,11 @@ namespace WindowsFormsApp1
             lblMemSearch.Visible = false;
         }
 
-        private void grdRentedBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-          
-            
-        }
-
-        private void lblMemberSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmReturnBook_Load(object sender, EventArgs e)
         {
             lstMemberSearch.Visible = false;
             grpReturnBook.Visible = false;
             lblMemSearch.Visible = false;
-        }
-
-        private void grdRentedBooks_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
     }
 }

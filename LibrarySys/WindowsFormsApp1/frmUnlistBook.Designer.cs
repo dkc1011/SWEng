@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class frmCheckBookAvailable
+    partial class frmUnlistBook
     {
         /// <summary>
         /// Required designer variable.
@@ -33,25 +33,25 @@
             this.lstBooks = new System.Windows.Forms.ListBox();
             this.txtBookSearch = new System.Windows.Forms.TextBox();
             this.lblMemberSearch = new System.Windows.Forms.Label();
-            this.btnCheckAvailable = new System.Windows.Forms.Button();
+            this.btnRemoveBook = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBookSearch
             // 
-            this.btnBookSearch.Location = new System.Drawing.Point(79, 164);
+            this.btnBookSearch.Location = new System.Drawing.Point(79, 40);
             this.btnBookSearch.Name = "btnBookSearch";
             this.btnBookSearch.Size = new System.Drawing.Size(170, 22);
-            this.btnBookSearch.TabIndex = 32;
+            this.btnBookSearch.TabIndex = 27;
             this.btnBookSearch.Text = "Search";
             this.btnBookSearch.UseVisualStyleBackColor = true;
             this.btnBookSearch.Click += new System.EventHandler(this.btnBookSearch_Click);
             // 
             // btnFinished
             // 
-            this.btnFinished.Location = new System.Drawing.Point(79, 192);
+            this.btnFinished.Location = new System.Drawing.Point(79, 68);
             this.btnFinished.Name = "btnFinished";
             this.btnFinished.Size = new System.Drawing.Size(170, 22);
-            this.btnFinished.TabIndex = 31;
+            this.btnFinished.TabIndex = 26;
             this.btnFinished.Text = "Finished";
             this.btnFinished.UseVisualStyleBackColor = true;
             this.btnFinished.Click += new System.EventHandler(this.btnFinished_Click);
@@ -61,49 +61,50 @@
             this.lstBooks.FormattingEnabled = true;
             this.lstBooks.Location = new System.Drawing.Point(264, 14);
             this.lstBooks.Name = "lstBooks";
-            this.lstBooks.Size = new System.Drawing.Size(318, 264);
-            this.lstBooks.TabIndex = 30;
+            this.lstBooks.Size = new System.Drawing.Size(318, 303);
+            this.lstBooks.TabIndex = 25;
+            this.lstBooks.SelectedIndexChanged += new System.EventHandler(this.lstBooks_SelectedIndexChanged);
             // 
             // txtBookSearch
             // 
-            this.txtBookSearch.Location = new System.Drawing.Point(79, 138);
+            this.txtBookSearch.Location = new System.Drawing.Point(79, 14);
             this.txtBookSearch.Name = "txtBookSearch";
             this.txtBookSearch.Size = new System.Drawing.Size(170, 20);
-            this.txtBookSearch.TabIndex = 29;
+            this.txtBookSearch.TabIndex = 24;
             // 
             // lblMemberSearch
             // 
             this.lblMemberSearch.AutoSize = true;
-            this.lblMemberSearch.Location = new System.Drawing.Point(12, 141);
+            this.lblMemberSearch.Location = new System.Drawing.Point(12, 17);
             this.lblMemberSearch.Name = "lblMemberSearch";
             this.lblMemberSearch.Size = new System.Drawing.Size(61, 13);
-            this.lblMemberSearch.TabIndex = 28;
+            this.lblMemberSearch.TabIndex = 23;
             this.lblMemberSearch.Text = "Book Title :";
             // 
-            // btnCheckAvailable
+            // btnRemoveBook
             // 
-            this.btnCheckAvailable.Location = new System.Drawing.Point(264, 289);
-            this.btnCheckAvailable.Name = "btnCheckAvailable";
-            this.btnCheckAvailable.Size = new System.Drawing.Size(318, 61);
-            this.btnCheckAvailable.TabIndex = 33;
-            this.btnCheckAvailable.Text = "Check Available";
-            this.btnCheckAvailable.UseVisualStyleBackColor = true;
-            this.btnCheckAvailable.Click += new System.EventHandler(this.btnCheckAvailable_Click);
+            this.btnRemoveBook.Location = new System.Drawing.Point(264, 323);
+            this.btnRemoveBook.Name = "btnRemoveBook";
+            this.btnRemoveBook.Size = new System.Drawing.Size(318, 36);
+            this.btnRemoveBook.TabIndex = 28;
+            this.btnRemoveBook.Text = "Remove Book";
+            this.btnRemoveBook.UseVisualStyleBackColor = true;
+            this.btnRemoveBook.Click += new System.EventHandler(this.btnRemoveBook_Click);
             // 
-            // frmCheckBookAvailable
+            // frmUnlistBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 371);
-            this.Controls.Add(this.btnCheckAvailable);
+            this.Controls.Add(this.btnRemoveBook);
             this.Controls.Add(this.btnBookSearch);
             this.Controls.Add(this.btnFinished);
             this.Controls.Add(this.lstBooks);
             this.Controls.Add(this.txtBookSearch);
             this.Controls.Add(this.lblMemberSearch);
-            this.Name = "frmCheckBookAvailable";
-            this.Text = "frmCheckBookAvailable";
-            this.Load += new System.EventHandler(this.frmCheckBookAvailable_Load);
+            this.Name = "frmUnlistBook";
+            this.Text = "frmUnlistBook";
+            this.Load += new System.EventHandler(this.frmRemoveBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,6 +117,6 @@
         private System.Windows.Forms.ListBox lstBooks;
         private System.Windows.Forms.TextBox txtBookSearch;
         private System.Windows.Forms.Label lblMemberSearch;
-        private System.Windows.Forms.Button btnCheckAvailable;
+        private System.Windows.Forms.Button btnRemoveBook;
     }
 }

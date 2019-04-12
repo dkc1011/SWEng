@@ -75,22 +75,22 @@
             // addMemberToolStripMenuItem
             // 
             this.addMemberToolStripMenuItem.Name = "addMemberToolStripMenuItem";
-            this.addMemberToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.addMemberToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.addMemberToolStripMenuItem.Text = "Add Member";
             this.addMemberToolStripMenuItem.Click += new System.EventHandler(this.addMemberToolStripMenuItem_Click);
             // 
             // updateMemberToolStripMenuItem
             // 
             this.updateMemberToolStripMenuItem.Name = "updateMemberToolStripMenuItem";
-            this.updateMemberToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.updateMemberToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.updateMemberToolStripMenuItem.Text = "Update Member";
             this.updateMemberToolStripMenuItem.Click += new System.EventHandler(this.updateMemberToolStripMenuItem_Click);
             // 
             // removeMemberToolStripMenuItem
             // 
             this.removeMemberToolStripMenuItem.Name = "removeMemberToolStripMenuItem";
-            this.removeMemberToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.removeMemberToolStripMenuItem.Text = "Remove Member";
+            this.removeMemberToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.removeMemberToolStripMenuItem.Text = "Deregister Member";
             this.removeMemberToolStripMenuItem.Click += new System.EventHandler(this.removeMemberToolStripMenuItem_Click);
             // 
             // manageBooksToolStripMenuItem
@@ -122,14 +122,14 @@
             // 
             this.removeBookToolStripMenuItem.Name = "removeBookToolStripMenuItem";
             this.removeBookToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.removeBookToolStripMenuItem.Text = "Remove Book";
+            this.removeBookToolStripMenuItem.Text = "Unlist Book";
             this.removeBookToolStripMenuItem.Click += new System.EventHandler(this.removeBookToolStripMenuItem_Click);
             // 
             // checkBookAvailabilityToolStripMenuItem
             // 
             this.checkBookAvailabilityToolStripMenuItem.Name = "checkBookAvailabilityToolStripMenuItem";
-            this.checkBookAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.checkBookAvailabilityToolStripMenuItem.Text = "Check Book Availability";
+            this.checkBookAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.checkBookAvailabilityToolStripMenuItem.Text = "Search Available Books";
             this.checkBookAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.checkBookAvailabilityToolStripMenuItem_Click);
             // 
             // manageRentalsToolStripMenuItem

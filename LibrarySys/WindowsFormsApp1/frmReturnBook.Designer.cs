@@ -96,7 +96,6 @@
             this.lblMemberSearch.Size = new System.Drawing.Size(96, 13);
             this.lblMemberSearch.TabIndex = 24;
             this.lblMemberSearch.Text = "Member Surname :";
-            this.lblMemberSearch.Click += new System.EventHandler(this.lblMemberSearch_Click);
             // 
             // label1
             // 
@@ -138,8 +137,6 @@
             this.grdRentedBooks.Name = "grdRentedBooks";
             this.grdRentedBooks.Size = new System.Drawing.Size(340, 125);
             this.grdRentedBooks.TabIndex = 34;
-            this.grdRentedBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRentedBooks_CellClick);
-            this.grdRentedBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRentedBooks_CellContentClick);
             // 
             // lblCloseRental
             // 

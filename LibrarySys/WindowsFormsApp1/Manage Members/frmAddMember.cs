@@ -28,21 +28,6 @@ namespace WindowsFormsApp1
             parent = Parent;
         }
 
-        private void txtSurnameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmAddMember_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             int dateCompare = DateTime.Compare(DateTime.Now, dtpDOB.Value);

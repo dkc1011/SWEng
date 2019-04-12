@@ -99,17 +99,36 @@ namespace WindowsFormsApp1
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            myBook.SetTitle(txtTitle.Text.ToUpper());
-            myBook.SetAuthor(txtAuthor.Text.ToUpper());
-            myBook.SetISBN(txtISBN.Text.ToUpper());
-            myBook.SetGenreId(Convert.ToInt32( cboGenre.Text.Substring(0, 3)));
-       
-            myBook.updBook();
+            if (txtTitle.Text.Equals(""))
+            {
+                MessageBox.Show("Title field must be filled.", "Error");
+            }
+            else if (txtAuthor.Text.Equals(""))
+            {
+                MessageBox.Show("Author field must be filled.", "Error");
+            }
+            else if (txtISBN.Text.Equals(""))
+            {
+                MessageBox.Show("ISBN field must be filled.", "Error");
+            }
+            else if (txtISBN.Text.Length < 12 && txtISBN.Text.Length > 15)
+            {
+                MessageBox.Show("Invalid ISBN entered");
+            }
+            else
+            {
+                myBook.SetTitle(txtTitle.Text.ToUpper());
+                myBook.SetAuthor(txtAuthor.Text.ToUpper());
+                myBook.SetISBN(txtISBN.Text.ToUpper());
+                myBook.SetGenreId(Convert.ToInt32(cboGenre.Text.Substring(0, 3)));
 
-            MessageBox.Show("Book " + txtTitle.Text.ToUpper() + " Updated", "Success");
+                myBook.updBook();
 
-            txtBookSearch.Clear();
-            txtBookSearch.Focus();
+                MessageBox.Show("Book " + txtTitle.Text.ToUpper() + " Updated", "Success");
+
+                txtBookSearch.Clear();
+                txtBookSearch.Focus();
+            }
         }
 
     }

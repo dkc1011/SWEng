@@ -77,7 +77,6 @@
             this.lstSelectedBooks.Size = new System.Drawing.Size(259, 108);
             this.lstSelectedBooks.TabIndex = 10;
             this.lstSelectedBooks.Visible = false;
-            this.lstSelectedBooks.SelectedIndexChanged += new System.EventHandler(this.lstSelectedBooks_SelectedIndexChanged);
             // 
             // lblBookSelected
             // 
@@ -129,7 +128,6 @@
             this.txtSelectedMember.TabIndex = 7;
             this.txtSelectedMember.Text = "None";
             this.txtSelectedMember.Visible = false;
-            this.txtSelectedMember.TextChanged += new System.EventHandler(this.txtSelectedMember_TextChanged);
             // 
             // lstBookSearch
             // 
@@ -265,7 +263,6 @@
             this.Controls.Add(this.lblRentalHeader);
             this.Name = "frmBorrowBook";
             this.Text = "frmBorrowBook";
-            this.Load += new System.EventHandler(this.frmBorrowBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

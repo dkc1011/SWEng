@@ -175,21 +175,5 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static string apostChecker(string text)
-        {
-            string newText = "";
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (text[i] == '\'')
-                {
-                    newText += text[i] + "\'";
-                }
-                else
-                    newText += text[i];
-            }
-            return newText;
-        }
-
-
     }
 }

@@ -188,7 +188,6 @@
             this.txtSelectedMember.ReadOnly = true;
             this.txtSelectedMember.Size = new System.Drawing.Size(134, 20);
             this.txtSelectedMember.TabIndex = 42;
-            this.txtSelectedMember.TextChanged += new System.EventHandler(this.txtSelectedMember_TextChanged);
             // 
             // frmPayFine
             // 
@@ -203,7 +202,6 @@
             this.Controls.Add(this.lblMemberSearch);
             this.Name = "frmPayFine";
             this.Text = "frmPayFine";
-            this.Load += new System.EventHandler(this.frmPayFine_Load);
             this.grpFine.ResumeLayout(false);
             this.grpFine.PerformLayout();
             this.ResumeLayout(false);

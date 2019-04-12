@@ -85,23 +85,11 @@
     <Compile Include="frmBorrowBook.Designer.cs">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBorrowBook2.cs">
+    <Compile Include="frmSearchAvailableBooks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBorrowBook2.Designer.cs">
-      <DependentUpon>frmBorrowBook2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmBorrowBook3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBorrowBook3.Designer.cs">
-      <DependentUpon>frmBorrowBook3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCheckBookAvailable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCheckBookAvailable.Designer.cs">
-      <DependentUpon>frmCheckBookAvailable.cs</DependentUpon>
+    <Compile Include="frmSearchAvailableBooks.Designer.cs">
+      <DependentUpon>frmSearchAvailableBooks.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListOverdueBooks.cs">
       <SubType>Form</SubType>
@@ -121,17 +109,11 @@
     <Compile Include="frmPayFine.Designer.cs">
       <DependentUpon>frmPayFine.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPayFine2.cs">
+    <Compile Include="frmUnlistBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPayFine2.Designer.cs">
-      <DependentUpon>frmPayFine2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmRemoveBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRemoveBook.Designer.cs">
-      <DependentUpon>frmRemoveBook.cs</DependentUpon>
+    <Compile Include="frmUnlistBook.Designer.cs">
+      <DependentUpon>frmUnlistBook.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReturnBook.cs">
       <SubType>Form</SubType>
@@ -139,23 +121,11 @@
     <Compile Include="frmReturnBook.Designer.cs">
       <DependentUpon>frmReturnBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReturnBook2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReturnBook2.Designer.cs">
-      <DependentUpon>frmReturnBook2.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmUpdateBook1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUpdateBook1.Designer.cs">
       <DependentUpon>frmUpdateBook1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUpdateBook2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUpdateBook2.Designer.cs">
-      <DependentUpon>frmUpdateBook2.cs</DependentUpon>
     </Compile>
     <Compile Include="Genre.cs" />
     <Compile Include="Manage Members\frmAddMember.cs">
@@ -164,11 +134,11 @@
     <Compile Include="Manage Members\frmAddMember.Designer.cs">
       <DependentUpon>frmAddMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manage Members\frmRemoveMember1.cs">
+    <Compile Include="Manage Members\frmDeregisterMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manage Members\frmRemoveMember1.Designer.cs">
-      <DependentUpon>frmRemoveMember1.cs</DependentUpon>
+    <Compile Include="Manage Members\frmDeregisterMember.Designer.cs">
+      <DependentUpon>frmDeregisterMember.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage Members\frmUpdateMember1.cs">
       <SubType>Form</SubType>
@@ -193,14 +163,8 @@
     <EmbeddedResource Include="frmBorrowBook.resx">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBorrowBook2.resx">
-      <DependentUpon>frmBorrowBook2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBorrowBook3.resx">
-      <DependentUpon>frmBorrowBook3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCheckBookAvailable.resx">
-      <DependentUpon>frmCheckBookAvailable.cs</DependentUpon>
+    <EmbeddedResource Include="frmSearchAvailableBooks.resx">
+      <DependentUpon>frmSearchAvailableBooks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListOverdueBooks.resx">
       <DependentUpon>frmListOverdueBooks.cs</DependentUpon>
@@ -211,29 +175,20 @@
     <EmbeddedResource Include="frmPayFine.resx">
       <DependentUpon>frmPayFine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPayFine2.resx">
-      <DependentUpon>frmPayFine2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRemoveBook.resx">
-      <DependentUpon>frmRemoveBook.cs</DependentUpon>
+    <EmbeddedResource Include="frmUnlistBook.resx">
+      <DependentUpon>frmUnlistBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReturnBook.resx">
       <DependentUpon>frmReturnBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReturnBook2.resx">
-      <DependentUpon>frmReturnBook2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateBook1.resx">
       <DependentUpon>frmUpdateBook1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateBook2.resx">
-      <DependentUpon>frmUpdateBook2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage Members\frmAddMember.resx">
       <DependentUpon>frmAddMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manage Members\frmRemoveMember1.resx">
-      <DependentUpon>frmRemoveMember1.cs</DependentUpon>
+    <EmbeddedResource Include="Manage Members\frmDeregisterMember.resx">
+      <DependentUpon>frmDeregisterMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage Members\frmUpdateMember1.resx">
       <DependentUpon>frmUpdateMember1.cs</DependentUpon>

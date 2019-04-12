@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class frmRemoveBook : Form
+    public partial class frmSearchAvailableBooks : Form
     {
         frmMainMenu parent;
-        private int mno;
-
-        public frmRemoveBook()
+        public frmSearchAvailableBooks()
         {
             InitializeComponent();
         }
 
-        public frmRemoveBook(frmMainMenu Parent)
+        public frmSearchAvailableBooks(frmMainMenu Parent)
         {
             InitializeComponent();
             parent = Parent;
+          
         }
+
         private void btnFinished_Click(object sender, EventArgs e)
         {
             Close();
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
 
             //retrieve all books with matching name
             DataSet ds = new DataSet();
-            ds = Book.FindAvailableBookByName(txtBookSearch.Text.ToUpper());
+            ds = Book.FindAvailableBookByName(txtBookSearch.Text.ToUpper()); 
 
 
             //if no books are found
@@ -61,40 +61,6 @@ namespace WindowsFormsApp1
             lstBooks.SelectedIndex = 0;
             txtBookSearch.Clear();
             lstBooks.Visible = true;
-            btnRemoveBook.Visible = true;
-        }
-
-        private void lstBooks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            mno = Convert.ToInt32(lstBooks.Text.Substring(0, 3));
-        }
-
-        private void btnRemoveBook_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Are you sure to delete this member?",
-                         "Confirm Remove Member",
-                         MessageBoxButtons.YesNo);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                Book.removeBook(mno);
-                MessageBox.Show("Member was successfully removed", "Success");
-                lstBooks.Hide();
-                btnRemoveBook.Hide();
-            }
-            else
-            {
-                txtBookSearch.Clear();
-                txtBookSearch.Focus();
-                lstBooks.Hide();
-                btnRemoveBook.Hide();
-            }
-        }
-
-        private void frmRemoveBook_Load(object sender, EventArgs e)
-        {
-            lstBooks.Hide();
-            btnRemoveBook.Hide();
         }
     }
 }

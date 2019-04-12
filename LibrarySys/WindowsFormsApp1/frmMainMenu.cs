@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
 
         private void removeMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Manage_Members.frmRemoveMember1 form = new Manage_Members.frmRemoveMember1(this);
+            Manage_Members.frmDeregisterMember form = new Manage_Members.frmDeregisterMember(this);
             this.Hide();
             form.Show();
         }
@@ -60,14 +60,14 @@ namespace WindowsFormsApp1
 
         private void removeBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRemoveBook form = new frmRemoveBook(this);
+            frmUnlistBook form = new frmUnlistBook(this);
             this.Hide();
             form.Show();
         }
 
         private void checkBookAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCheckBookAvailable form = new frmCheckBookAvailable(this);
+            frmSearchAvailableBooks form = new frmSearchAvailableBooks(this);
             this.Hide();
             form.Show();
     
